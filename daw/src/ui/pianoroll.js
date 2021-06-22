@@ -39,3 +39,5 @@ function UIpianorollKeyboardEvent( status, e ) {
 }
 
 window.UIpianorollInit = UIpianorollInit;
+
+window.UIpianorollKeyboardEvent = UIpianorollKeyboardEvent;
