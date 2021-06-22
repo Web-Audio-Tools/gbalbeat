@@ -33,3 +33,5 @@ const gswaBPMTap = {
 		return 0;
 	},
 };
+
+window.gswaBPMTap = gswaBPMTap;
