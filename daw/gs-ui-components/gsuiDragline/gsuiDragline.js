@@ -149,3 +149,5 @@ class gsuiDragline {
 		this._render( e.pageX, e.pageY );
 	}
 }
+
+window.gsuiDragline = gsuiDragline;
