@@ -68,6 +68,8 @@ class GSPatternroll {
 	_ongsuiEvents( e ) {
 		const d = e.detail;
 
+		console.log(e);
+
 		switch ( d.component ) {
 			case "gsuiTracklist":
 				this._dawcore.callAction( d.eventName, ...d.args );

@@ -58,7 +58,7 @@ const GSUI = {
 			const d = e.detail,
 				cbs2 = cbs[ d.component ] || cbs.default,
 				fn = cbs2 && ( cbs2[ d.eventName ] || cbs2.default );
-
+			console.log(e);
 			if ( fn && fn( d, e.target, e ) !== true ) {
 				e.stopPropagation();
 				e.stopImmediatePropagation();

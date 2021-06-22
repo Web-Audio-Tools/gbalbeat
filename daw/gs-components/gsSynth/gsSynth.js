@@ -28,6 +28,8 @@ class GSSynth {
 				id = this._synthId,
 				dc = this._dawcore;
 
+			console.log(e);
+
 			switch ( d.component ) {
 				case "gsuiEnvelope":
 					switch ( d.eventName ) {

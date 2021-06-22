@@ -402,7 +402,7 @@ function UIrun() {
 	window.onblur = () => UIpianoroll.getUIKeys().midiReleaseAllKeys();
 	window.onkeyup = UIkeyboardUp;
 	window.onkeydown = UIkeyboardDown;
-	window.onbeforeunload = UIcompositionBeforeUnload;
+	// window.onbeforeunload = UIcompositionBeforeUnload;
 	document.body.ondrop = UIdrop;
 	document.body.ondragover = () => false;
 	document.addEventListener( "wheel", e => {
