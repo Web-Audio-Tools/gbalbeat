@@ -197,6 +197,7 @@ class gsuiPianoroll extends HTMLElement {
 		}
 	}
 	#blockDOMChange( el, prop, val ) {
+		console.log("blockDOMChange " + el + " " + prop + " " + val)
 		switch ( prop ) {
 			case "when": {
 				el.style.left = `${ val }em`;

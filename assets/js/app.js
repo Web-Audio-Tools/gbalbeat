@@ -9,9 +9,21 @@ import "../css/app.scss"
 //
 // Import deps with the dep name or local files with a relative path, for example:
 //
-//     import {Socket} from "phoenix"
+import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+
+let socket = new Socket("/socket", {
+    logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) })
+  })
+
+// Now that you are connected, you can join channels with a topic:
+let channel = socket.channel("music:lobby", {})
+channel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+window.socket = socket;
 
 require("../../daw/src/run.js")
