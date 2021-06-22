@@ -76,6 +76,7 @@ window.UIcontrolsClickPlayToggle = function() {
 }
 
 window.UIcontrolsClickStop = function() {
+	channel.push("new:msg", {stop: true});
 	DAW.stop();
 	switch ( document.activeElement ) {
 		case UIdrums.rootElement: DAW.drumsFocus( "-f" ); break;

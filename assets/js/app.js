@@ -36,6 +36,17 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("new:msg", (msg) => {
+    if(msg["play"] != undefined && msg["play"] == true) {
+        DAW.play();
+        return;
+    } else if(msg["play"] != undefined && msg["play"] == false) {
+        DAW.pause();
+        return;
+    }
+    if(msg["stop"] != undefined && msg["stop"] == true){
+        DAW.stop();
+        return;
+    }
     if(msg["id"] != window.id)
         DAW.callActionNoSend(msg["action"], ...msg["args"])
 })

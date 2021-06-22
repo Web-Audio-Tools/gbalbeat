@@ -171,13 +171,17 @@ class DAWCore {
 	}
 	togglePlay() {
 		this.isPlaying() ? this.pause() : this.play();
+		window.channel.push("new:msg", {play: this.isPlaying()})
 	}
 	play() {
 		this._focused.play();
+		
+
 		this._call( "play", this._focusedStr );
 	}
 	pause() {
 		this._focused.pause();
+		
 		this._call( "pause", this._focusedStr );
 		this._clockUpdate();
 	}
