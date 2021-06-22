@@ -1,9 +1,9 @@
-<noscript id="noscript">GridSound needs JavaScript to run</noscript>
+<noscript id="noscript">Gbalbeat needs JavaScript to run</noscript>
 <div id="loading">
 	<div id="loadingContent">
 		<div class="TextGlitch" id="gsTitle">
 			<div class="TextGlitch-clip">
-				<div class="TextGlitch-word">GridSound</div>
+				<div class="TextGlitch-word">Gbalbeat</div>
 				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
 				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
 			</div>
@@ -29,9 +29,9 @@
 </div>
 <div id="head">
 	<div id="header">
-		<span id="title" data-text="Gbalbeat" data-text-s="GS"></span>
+		<span id="title" data-text="Gbalbeat" data-text-s="GB"></span>
 		<a class="btn btnLarge headBtn" href id="headUser" title="Cloud profile" target="_blank" rel="noopener"></a>
-		<button style="display: none" class="btn btnLarge headBtn btnIconLarge gsuiIcon" id="login" data-icon="profile" title="Login to GridSound"></button>
+		<button style="display: none" class="btn btnLarge headBtn btnIconLarge gsuiIcon" id="login" data-icon="profile" title="Login to Gbalbeat"></button>
 		<button style="display: none"  class="btn btnLarge headBtn btnIconLarge gsuiIcon" id="logout" data-icon="logout" title="Logout"></button>
 		<div id="headCmps">
 			<button class="btn btnLarge headBtn headDropdown-btn gsuiIcon" id="cmpsBtn" data-icon="musics" title="Create cloud/local compositions"></button>
@@ -93,12 +93,12 @@
 	<div id="headHelp">
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="cookies" data-icon="cookie" title="Cookies"></button>
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpKeyboardShortcuts" data-icon="keyboard" title="Keyboard shortcuts"></button>
-		<a      class="btn btnMarge btnLarge btnBg gsuiIcon" id="help" data-icon="help" title="Help" href="https://github.com/gridsound/daw/wiki/help" target="_blank" rel="noopener"></a>
-		<a      class="btn btnMarge btnLarge btnBg gsuiIcon" id="changelog" data-icon="changelog" title="Changelog" href="https://github.com/gridsound/daw/wiki/changelog" target="_blank" rel="noopener"></a>
+		<a      style="display: none" class="btn btnMarge btnLarge btnBg gsuiIcon" id="help" data-icon="help" title="Help" href="https://github.com/Gbalbeat/daw/wiki/help" target="_blank" rel="noopener"></a>
+		<a      style="display: none" class="btn btnMarge btnLarge btnBg gsuiIcon" id="changelog" data-icon="changelog" title="Changelog" href="https://github.com/Gbalbeat/daw/wiki/changelog" target="_blank" rel="noopener"></a>
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpAbout" data-icon="about" title="About"></button>
 	</div>
 	<div id="headVersion">
-		<a id="headVersionBtn" class="headDropdown-btn" title="Access older versions" href="https://github.com/gridsound/daw/wiki/versions" target="_blank" rel="noopener">
+		<a style="display: none" id="headVersionBtn" class="headDropdown-btn" title="Access older versions" href="https://github.com/Gbalbeat/daw/wiki/versions" target="_blank" rel="noopener">
 			<i class="gsuiIcon" data-icon="list"></i>
 			<span id="headVersionNum"></span>
 		</a>
@@ -224,8 +224,8 @@
 		</div>
 		<div id="authPopupError" class="popup-error-msg"></div>
 	</fieldset>
-	<a target="_blank" rel="noopener" href="https://gridsound.com/#/forgotPassword">Forgot password&nbsp;?</a><br/>
-	<a target="_blank" rel="noopener" href="https://gridsound.com/#/auth">Create a new account</a>
+	<a target="_blank" rel="noopener" href="https://Gbalbeat.com/#/forgotPassword">Forgot password&nbsp;?</a><br/>
+	<a target="_blank" rel="noopener" href="https://Gbalbeat.com/#/auth">Create a new account</a>
 </div>
 <div class="popup" id="openPopupContent" data-remove>
 	<fieldset>
@@ -257,7 +257,7 @@
 		</span>
 	</div>
 	<div>
-		Gbalbeat is a networked, collaborative browser-based digital audio workstation based on GridSound following the
+		Gbalbeat is a networked, collaborative browser-based digital audio workstation based on Gbalbeat following the
 		<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>.
 	</div>
 </div>

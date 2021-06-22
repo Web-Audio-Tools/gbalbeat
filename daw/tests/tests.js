@@ -38,7 +38,7 @@ QUnit.module( "DAW", () => {
 
 		clickX( el, "mousedown", clientX );
 		assert.expect( 3 );
-		assert.strictEqual( document.title, "*GridSound", "document.title" );
+		assert.strictEqual( document.title, "*Gbalbeat", "document.title" );
 		assert.strictEqual( DAW.get.keys( 0 )[ 1 ].when, 1, "DAW.get.keys( 0 )[ 1 ].when" );
 		assert.strictEqual( qSA( ".historyAction" ).length, nbActions + 1, '$( ".historyAction" ).length' );
 	} );

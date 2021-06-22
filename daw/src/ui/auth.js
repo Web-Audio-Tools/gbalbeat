@@ -74,7 +74,7 @@ window.UIauthLoginSubmit = function( obj ) {
 
 window.UIauthLoginThen = function( me ) {
 	DOM.app.classList.add( "logged" );
-	DOM.headUser.href = `https://gridsound.com/#/u/${ me.username }`;
+	DOM.headUser.href = `https://Gbalbeat.com/#/u/${ me.username }`;
 	DOM.headUser.style.backgroundImage = `url("${ me.avatar }")`;
 	return me;
 }
