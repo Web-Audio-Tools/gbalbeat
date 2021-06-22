@@ -24,7 +24,7 @@ DAWCore.json.composition = ( env, id ) => {
 		buffers: {
 			0: { type: "audio/wav", duration: .1529, url: "kick-808.wav" },
 			1: { type: "audio/wav", duration: .256, url: "clap-808.wav" },
-			2: { type: "audio/wav", duration: .0357, url: "hat-808.wav" },
+			2: { type: "audio/wav", duration: .0357, url: "hihat-808.wav" },
 			3: { type: "audio/wav", duration: .1151, url: "snare-808.wav" },
 			4: { type: "audio/wav", duration: .7, url: "openhat-808.wav" },
 		},

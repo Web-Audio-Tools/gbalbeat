@@ -161,3 +161,6 @@ const gsuiPopup = new class {
 		}
 	}
 }();
+
+
+window.gsuiPopup = gsuiPopup;
