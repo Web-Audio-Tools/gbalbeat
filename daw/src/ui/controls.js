@@ -137,3 +137,5 @@ window.UIcontrolsClickTempo = function() {
 		},
 	} );
 }
+
+window.UIclock = UIclock;

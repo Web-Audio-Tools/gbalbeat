@@ -26,7 +26,7 @@ DAWCore.Buffers = class {
 		this.#files.set( key, buf );
 		return !url
 			? Promise.resolve( buf )
-			: fetch( `../assets/samples/${ url }` )
+			: fetch( `../samples/${ url }` )
 				.then( res => res.arrayBuffer() )
 				.then( arr => this.#daw.ctx.decodeAudioData( arr ) )
 				.then( buffer => {

@@ -51,3 +51,5 @@ class gsuiAnalyser {
 		ctx.putImageData( imgR, w2, 0 );
 	}
 }
+
+window.gsuiAnalyser = gsuiAnalyser;

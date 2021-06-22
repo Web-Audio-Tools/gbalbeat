@@ -107,3 +107,6 @@ class gswaEnvelope {
 }
 
 Object.freeze( gswaEnvelope );
+
+
+window.gswaEnvelope = gswaEnvelope;

@@ -27,3 +27,5 @@ function UImixerOpenChanPopup( objId ) {
 }
 
 window.UImixerInit = UImixerInit;
+
+window.UImixerOpenChanPopup = UImixerOpenChanPopup;

@@ -6,14 +6,14 @@ self.addEventListener( "install", e => {
 			"/daw/",
 			"/daw/index.html",
 			"/daw/manifest.json",
-			"/assets/favicon.png",
-			"/assets/fonts/fa-brands-400.woff2",
-			"/assets/fonts/fa-duotone-900.woff2",
-			"/assets/fonts/oswald-400-latin.woff2",
-			"/assets/fonts/unica-one-400-latin.woff2",
-			"/assets/fonts/montserrat-500-latin.woff2",
-			"/assets/fonts/montserrat-700-latin.woff2",
-			"/assets/fonts/inconsolata-400-latin.woff2",
+			"/favicon.png",
+			"/fonts/fa-brands-400.woff2",
+			"/fonts/fa-duotone-900.woff2",
+			"/fonts/oswald-400-latin.woff2",
+			"/fonts/unica-one-400-latin.woff2",
+			"/fonts/montserrat-500-latin.woff2",
+			"/fonts/montserrat-700-latin.woff2",
+			"/fonts/inconsolata-400-latin.woff2",
 		] )
 	) ) );
 } );

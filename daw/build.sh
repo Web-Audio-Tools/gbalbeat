@@ -12,13 +12,13 @@ declare -a HEADER=(
 	'<meta property="og:type" content="website"/>'
 	'<meta property="og:title" content="GridSound"/>'
 	'<meta property="og:url" content="https://gridsound.com/daw/"/>'
-	'<meta property="og:image" content="https://gridsound.com/assets/og-image.jpg"/>'
+	'<meta property="og:image" content="https://gridsound.com/og-image.jpg"/>'
 	'<meta property="og:image:width" content="800"/>'
 	'<meta property="og:image:height" content="400"/>'
 	'<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
 	'<meta name="theme-color" content="#3a5158"/>'
 	'<link rel="manifest" href="manifest.json"/>'
-	'<link rel="shortcut icon" href="../assets/favicon.png"/>'
+	'<link rel="shortcut icon" href="../favicon.png"/>'
 )
 
 declare -a HEADEREND=(
@@ -84,7 +84,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindows.css"
 	"gs-ui-components/gsuiWindows/gsuiWindow.css"
 
-	"assets/fonts/fonts.css"
+	"fonts/fonts.css"
 
 	"src/css/reset.css"
 	"src/css/textGlitch.css"
@@ -469,7 +469,7 @@ buildTests() {
 	filename='tests.html'
 	echo "Build $filename"
 	printf '%s\n' "${HEADER[@]}" > $filename
-	echo '<link rel="stylesheet" href="assets/qunit/qunit-2.9.2.css"/>' >> $filename
+	echo '<link rel="stylesheet" href="qunit/qunit-2.9.2.css"/>' >> $filename
 	echo '<link rel="stylesheet" href="tests/tests.css"/>' >> $filename
 	echo '<style>' >> $filename
 	cat "${CSSfiles[@]}" >> $filename
@@ -481,7 +481,7 @@ buildTests() {
 	echo '<script>' >> $filename
 	jsMainFile >> $filename
 	echo '</script>' >> $filename
-	echo '<script src="assets/qunit/qunit-2.9.2.js"></script>' >> $filename
+	echo '<script src="qunit/qunit-2.9.2.js"></script>' >> $filename
 	echo '<script src="tests/tests.js"></script>' >> $filename
 	echo '</body>' >> $filename
 	echo '</html>' >> $filename

@@ -23,3 +23,5 @@ function UIsynthChange( obj ) {
 }
 
 window.UIsynthInit = UIsynthInit;
+
+window.UIsynthChange = UIsynthChange;

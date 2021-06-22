@@ -296,3 +296,5 @@ window.UIcompositionDeleted = UIcompositionDeleted;
 window.UIcompositionLoading = UIcompositionLoading;
 
 window.UIcompositionSavedStatus = UIcompositionSavedStatus;
+
+window.UIcompositions = UIcompositions;

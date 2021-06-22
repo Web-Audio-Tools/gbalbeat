@@ -65,3 +65,5 @@ function UIupdatePatternsBPM( bpm ) {
 
 window.UIpatternsInit = UIpatternsInit;
 window.UIpatternsBuffersLoaded = UIpatternsBuffersLoaded;
+window.UIupdatePattern = UIupdatePattern;
+window.UIupdatePatternsBPM = UIupdatePatternsBPM;

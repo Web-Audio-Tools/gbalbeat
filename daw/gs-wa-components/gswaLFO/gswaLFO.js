@@ -167,3 +167,5 @@ class gswaLFO {
 }
 
 Object.freeze( gswaLFO );
+
+window.gswaLFO = gswaLFO;
