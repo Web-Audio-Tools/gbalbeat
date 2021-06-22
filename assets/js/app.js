@@ -36,6 +36,8 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("new:msg", (msg) => {
+    if(msg["id"] == window.id)
+        return;
     if(msg["play"] != undefined && msg["play"] == true) {
         DAW.play();
         return;
@@ -47,8 +49,22 @@ channel.on("new:msg", (msg) => {
         DAW.stop();
         return;
     }
-    if(msg["id"] != window.id)
+    if(msg["action"] != undefined && msg["args"] != undefined) {
         DAW.callActionNoSend(msg["action"], ...msg["args"])
+        return;
+    }
+    if(msg["composition_mode"] != undefined && msg["composition_mode"] != true) {
+        document.getElementById("playToggle").setAttribute("data-dir", "up")
+        DAW.compositionFocus( "-f" );
+        return;
+    } else if (msg["composition_mode"] != undefined && msg["composition_mode"] != false) {
+        document.getElementById("playToggle").setAttribute("data-dir", "down")
+        DAW.pianorollFocus( "-f" );
+        return;
+    }
+
+    
+    
 })
 
 window.socket = socket;

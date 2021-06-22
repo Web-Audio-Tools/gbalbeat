@@ -70,13 +70,16 @@ window.UIcontrolsClickPlay = function() {
 }
 
 window.UIcontrolsClickPlayToggle = function() {
-	DAW.getFocusedName() === "composition"
-		? DAW.pianorollFocus( "-f" )
-		: DAW.compositionFocus( "-f" );
+	var mode = DAW.getFocusedName() === "composition"
+		if (mode == true )
+			DAW.pianorollFocus( "-f" )
+		else
+			DAW.compositionFocus( "-f" );
+	window.channel.push("new:msg", {composition_mode: mode, id: window.id});
 }
 
 window.UIcontrolsClickStop = function() {
-	channel.push("new:msg", {stop: true});
+	channel.push("new:msg", {stop: true, id: window.id});
 	DAW.stop();
 	switch ( document.activeElement ) {
 		case UIdrums.rootElement: DAW.drumsFocus( "-f" ); break;
