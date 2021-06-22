@@ -14,6 +14,15 @@ import {Socket} from "phoenix"
 //
 import "phoenix_html"
 
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+window.id = uuidv4();
+
 let socket = new Socket("/socket", {
     logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) })
   })
@@ -26,6 +35,12 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
+channel.on("new:msg", (msg) => {
+    if(msg["id"] != window.id)
+        DAW.callActionNoSend(msg["action"], ...msg["args"])
+})
+
 window.socket = socket;
+window.channel = channel;
 
 require("../../daw/src/run.js")

@@ -1,8 +1,27 @@
 "use strict";
 
 function UIcompositionChanged( obj, prevObj ) {
+	window.last_change = prevObj;
+	window.current_change = obj;
 	console.log( "change", obj );
+	// channel.push("new:msg", obj)
 	UIpatterns.change( obj );
+	UIsynth.change( obj );
+	UIdrums.change( obj );
+	UIeffects.change( obj );
+	UImixer.change( obj );
+	UIpianoroll.change( obj );
+	UIpatternroll.change( obj );
+	UIcompositionChanged.fn.forEach( ( fn, attrs ) => {
+		if ( attrs.some( attr => attr in obj ) ) {
+			fn( obj, prevObj );
+		}
+	} );
+}
+
+window.UIchangecomposition = function ( obj ) {
+	var prevObj = window.last_change;
+	console.log( "change", obj );
 	UIsynth.change( obj );
 	UIdrums.change( obj );
 	UIeffects.change( obj );

@@ -1,5 +1,7 @@
 "use strict";
 
+// import { channel } from "diagnostic_channel";
+
 class DAWCore {
 	constructor() {
 		this.cb = {};
@@ -105,6 +107,25 @@ class DAWCore {
 		}
 	}
 	callAction( action, ...args ) {
+		const fn = DAWCore.actions[ action ];
+
+		window.channel.push("new:msg", {action: action, args: args, id: window.id})
+
+		if ( !fn ) {
+			console.error( `DAWCore: undefined action "${ action }"` );
+		} else {
+			const ret = DAWCore.utils.deepFreeze( fn( ...args, this.get ) );
+
+			if ( Array.isArray( ret ) ) {
+				this.history.stackChange( ...ret );
+			} else if ( ret ) {
+				const undo = DAWCore.utils.composeUndo( this.get.cmp(), ret );
+
+				this.composition.change( ret, undo );
+			}
+		}
+	}
+	callActionNoSend( action, ...args ) {
 		const fn = DAWCore.actions[ action ];
 
 		if ( !fn ) {
