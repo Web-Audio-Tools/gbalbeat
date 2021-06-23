@@ -47,6 +47,16 @@ function UIloaded() {
 	.receive("ok", resp => { console.log("Joined successfully", resp) })
 	.receive("error", resp => { console.log("Unable to join", resp) })
 
+	WebMidi.enable(function (err) {
+
+		if (err) {
+		  console.log("WebMidi could not be enabled.", err);
+		} else {
+		  console.log("WebMidi enabled!");
+		}
+		
+	  }, true);
+
 }
 
 

@@ -116,5 +116,7 @@ window.socket = socket;
 window.channel = channel;
 
 
+import WebMidi from "webmidi";
+window.WebMidi = WebMidi;
 
 require("../../daw/src/run.js")
