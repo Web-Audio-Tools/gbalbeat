@@ -27,7 +27,7 @@ window.room = document.getElementById("room_id").innerHTML;
 window.history.pushState({page: "same"}, "same page", "/?id=" + window.room);
 
 let socket = new Socket("/socket", {
-    logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }),
+    //logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }),
     params: {user_id: window.id, room_id: window.room}
 })
 
