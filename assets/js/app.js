@@ -57,6 +57,10 @@ function renderOnlineUsers(presence) {
   
 presence.onSync(() => renderOnlineUsers(presence))
 
+presence.onJoin(() => {
+    DAW.stop();
+})
+
 window.presence = presence;
 
 socket.connect();
