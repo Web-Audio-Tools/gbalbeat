@@ -91,7 +91,7 @@ DAWCore.Pianoroll = class {
 		this._waKeys.scheduler.setLoopBeat( 0, this.duration || this.daw.get.beatsPerMeasure() );
 	}
 	liveKeydown( midi ) {
-		window.channel.push("new:msg", {midi: midi})
+		window.channel.push("new:msg", {midi: midi, room: window.room})
 		if ( !( midi in this._keysStartedLive ) ) {
 			this._keysStartedLive[ midi ] = this._synth.startKey(
 				[ [ null, DAWCore.json.key( { key: midi } ) ] ],
@@ -99,7 +99,7 @@ DAWCore.Pianoroll = class {
 		}
 	}
 	liveKeyup( midi ) {
-		window.channel.push("new:msg", {live_key_up: true, midi: midi})
+		window.channel.push("new:msg", {live_key_up: true, midi: midi, room: window.room})
 		if ( this._keysStartedLive[ midi ] ) {
 			this._synth.stopKey( this._keysStartedLive[ midi ] );
 			delete this._keysStartedLive[ midi ];

@@ -171,7 +171,7 @@ class DAWCore {
 	}
 	togglePlay() {
 		this.isPlaying() ? this.pause() : this.play();
-		window.channel.push("new:msg", {play: this.isPlaying(), id: window.id})
+		window.channel.push("new:msg", {play: this.isPlaying(), id: window.id, room: window.room})
 	}
 	play() {
 		this._focused.play();

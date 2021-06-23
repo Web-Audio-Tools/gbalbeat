@@ -32,7 +32,7 @@ window.UIcontrolsInit = function() {
 window.UIcontrolsSliderTime_inputstart = function( beat ) {
 	DAW.cb.clockUpdate = null;
 	UIclock.setTime( beat );
-	window.channel.push("new:msg", {set_time: true, beat: beat})
+	window.channel.push("new:msg", {set_time: true, beat: beat, room: window.room})
 }
 window.UIcontrolsSliderTime_oninputend = function( _beat ) {
 	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
@@ -41,7 +41,7 @@ window.UIcontrolsSliderTime_oninput = function( beat ) {
 	const beatRound = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
 
 	UIclock.setTime( beatRound );
-	window.channel.push("new:msg", {set_time: true, beat: beatRound})
+	window.channel.push("new:msg", {set_time: true, beat: beatRound, room: window.room})
 }
 window.UIcontrolsSliderTime_onchange = function() {
 	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
@@ -55,7 +55,7 @@ window.UIcontrolsBPMTap = function() {
 
 window.UIcontrolsClockUpdate = function( beat ) {
 	UIclock.setTime( beat );
-	window.channel.push("new:msg", {set_time: true, beat: beat})
+	window.channel.push("new:msg", {set_time: true, beat: beat, room: window.room})
 }
 
 window.UIcontrolsCurrentTime = function( beat, focused ) {
@@ -78,11 +78,11 @@ window.UIcontrolsClickPlayToggle = function() {
 			DAW.pianorollFocus( "-f" )
 		else
 			DAW.compositionFocus( "-f" );
-	window.channel.push("new:msg", {composition_mode: mode, id: window.id});
+	window.channel.push("new:msg", {composition_mode: mode, id: window.id, room: window.room});
 }
 
 window.UIcontrolsClickStop = function() {
-	channel.push("new:msg", {stop: true, id: window.id});
+	channel.push("new:msg", {stop: true, id: window.id, room: window.room});
 	DAW.stop();
 	switch ( document.activeElement ) {
 		case UIdrums.rootElement: DAW.drumsFocus( "-f" ); break;
