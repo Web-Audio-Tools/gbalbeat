@@ -115,6 +115,9 @@ channel.on("new:msg", (msg) => {
 window.socket = socket;
 window.channel = channel;
 
+import 'web-midi-api';
+
+
 
 import WebMidi from "webmidi";
 window.WebMidi = WebMidi;
