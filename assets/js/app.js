@@ -59,6 +59,8 @@ presence.onSync(() => renderOnlineUsers(presence))
 
 presence.onJoin(() => {
     DAW.stop();
+    document.getElementById("playToggle").setAttribute("data-dir", "up")
+    DAW.pianorollFocus( "-f" );
 })
 
 window.presence = presence;

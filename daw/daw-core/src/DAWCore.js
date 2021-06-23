@@ -232,7 +232,7 @@ class DAWCore {
 		this._call( "clockUpdate", this._focused.getCurrentTime() );
 	}
 	_focusOn( focusedStr, force ) {
-		if ( force === "-f" || !this.isPlaying() ) {
+		if (!this.isPlaying() ) {
 			this.pause();
 			this._focused = this[ focusedStr ];
 			this._focusedStr = focusedStr;
@@ -240,6 +240,15 @@ class DAWCore {
 			this._call( "focusOn", "pianoroll", focusedStr === "pianoroll" );
 			this._call( "focusOn", "drums", focusedStr === "drums" );
 			this._clockUpdate();
+		} else {
+			this.pause();
+			this._focused = this[ focusedStr ];
+			this._focusedStr = focusedStr;
+			this._call( "focusOn", "composition", focusedStr === "composition" );
+			this._call( "focusOn", "pianoroll", focusedStr === "pianoroll" );
+			this._call( "focusOn", "drums", focusedStr === "drums" );
+			this._clockUpdate();
+			this.play();
 		}
 	}
 	_call( cbName, ...args ) {

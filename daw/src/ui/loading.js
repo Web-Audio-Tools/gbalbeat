@@ -22,7 +22,10 @@ function UIloaded() {
 	const el = document.querySelector("#loading");
 
 	el.classList.add("started");
-	setTimeout(() => el.remove(), 800);
+	// setTimeout(() => el.remove(), 800);
+	el.remove();
+
+
 
 	document.getElementById("site_link").value = window.location;
 
@@ -112,7 +115,7 @@ function UIloaded() {
 	}, true);
 
 
-
+	
 
 }
 
