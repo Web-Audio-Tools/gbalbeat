@@ -71,6 +71,7 @@ channel.on("new:msg", (msg) => {
             const p = JSON.parse(packet);
             DAW.callActionNoSend(p["action"], ...p["args"])
         });
+        return;
     }
     if(msg["id"] == window.id)
         return;
