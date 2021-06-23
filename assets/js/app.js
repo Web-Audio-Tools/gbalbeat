@@ -67,6 +67,8 @@ socket.connect();
 
 channel.on("new:msg", (msg) => {
     if(msg["packets"] != undefined) {
+        // reset daw
+        for(var i = 0; i < UIhistoryActions.size; i++) DAW.history.undo();
         const packets = msg["packets"];
         packets.forEach(packet => {
             const p = JSON.parse(packet);

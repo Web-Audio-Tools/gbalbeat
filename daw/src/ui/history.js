@@ -26,3 +26,5 @@ window.UIhistoryDeleteAction = function( { index } ) {
 	UIhistoryActions.get( index ).remove();
 	UIhistoryActions.delete( index );
 }
+
+window.UIhistoryActions = UIhistoryActions;
