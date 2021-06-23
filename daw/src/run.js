@@ -356,8 +356,7 @@ import "./ui/compositionChanged.js"
 
 "use strict";
 
-UIrun();
-UIloaded();
+UIloading().then( UIrun ).then( UIloaded );
 
 function UIrun() {
 	const DAW = new DAWCore(),

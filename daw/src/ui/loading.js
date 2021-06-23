@@ -41,7 +41,12 @@ function UIloaded() {
         setTimeout(function () {
             document.getElementById("copy_link").innerHTML = "copy link"
         }, 3000)
-    })  
+    })
+
+	channel.join()
+	.receive("ok", resp => { console.log("Joined successfully", resp) })
+	.receive("error", resp => { console.log("Unable to join", resp) })
+
 }
 
 
