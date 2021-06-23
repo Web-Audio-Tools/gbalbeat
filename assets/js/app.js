@@ -86,7 +86,8 @@ channel.on("new:msg", (msg) => {
     }
     if(msg["id"] == window.id)
         return;
-
+    if(msg["room"] != window.room)
+        return;
 
     if(msg["set_time"] != undefined && msg["set_time"] == true && msg["beat"] != undefined){
         const beat = msg["beat"];
