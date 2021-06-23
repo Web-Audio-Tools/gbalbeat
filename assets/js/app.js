@@ -9,7 +9,7 @@ import "../css/app.scss"
 //
 // Import deps with the dep name or local files with a relative path, for example:
 //
-import {Socket} from "phoenix"
+import {Socket, Presence} from "phoenix"
 //     import socket from "./socket"
 //
 import "phoenix_html"
@@ -27,12 +27,38 @@ window.history.pushState({page: "same"}, "same page", "/?id=" + document.getElem
 
 let socket = new Socket("/socket", {
     logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }),
-  })
+    params: {user_id: window.id}
+})
 
-socket.connect();
+
+
+
+
 
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("music:" + document.getElementById("room_id").innerHTML, {})
+
+let presence = new Presence(channel)
+
+function renderOnlineUsers(presence) {
+    let response = ""
+  
+    presence.list((id, {metas: [first, ...rest]}) => {
+      let count = rest.length + 1
+      response += `<li>${id}</li>`
+    })
+  
+    DOM.aboutPopupContent.getElementsByTagName("ul").online_list.innerHTML = response;
+}
+
+  window.renderOnlineUsers = renderOnlineUsers;
+  
+  
+presence.onSync(() => renderOnlineUsers(presence))
+
+window.presence = presence;
+
+socket.connect();
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
@@ -74,6 +100,7 @@ channel.on("new:msg", (msg) => {
 
 window.socket = socket;
 window.channel = channel;
+
 
 
 require("../../daw/src/run.js")

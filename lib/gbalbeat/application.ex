@@ -14,9 +14,11 @@ defmodule Gbalbeat.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Gbalbeat.PubSub},
       # Start the Endpoint (http/https)
-      GbalbeatWeb.Endpoint
+      GbalbeatWeb.Endpoint,
       # Start a worker by calling: Gbalbeat.Worker.start_link(arg)
       # {Gbalbeat.Worker, arg}
+      GbalbeatWeb.Presence
+ 
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -92,7 +92,7 @@
 		<button class="btn btnMarge winBtn" data-win="effects" title="Open/close the effects window">effects</button>
 	</div>
   <div><p>copy link to this room: <input type="text" id="site_link" /><button id="copy_link">copy link</button></p></div>
-	<div id="headHelp">
+  <div id="headHelp">
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="cookies" data-icon="cookie" title="Cookies"></button>
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpKeyboardShortcuts" data-icon="keyboard" title="Keyboard shortcuts"></button>
 		<a      style="display: none" class="btn btnMarge btnLarge btnBg gsuiIcon" id="help" data-icon="help" title="Help" href="https://github.com/Gbalbeat/daw/wiki/help" target="_blank" rel="noopener"></a>
@@ -262,6 +262,8 @@
 		Gbalbeat is a networked, collaborative browser-based digital audio workstation based on Gbalbeat following the
 		<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>.
 	</div>
+  <h3>Online Users</h3>
+  <ul id="online_list"></ul>
 </div>
 <div class="popup" id="tempoPopupContent" data-remove>
 	<fieldset>

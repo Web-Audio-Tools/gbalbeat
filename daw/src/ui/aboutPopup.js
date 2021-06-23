@@ -18,12 +18,6 @@ function UIaboutPopupVersionCheck() {
 
 	dt.icon = "none";
 	dt.spin = "on";
-	fetch( `https://Gbalbeat.com/daw/VERSION?${ Math.random() }` )
-		.then( res => res.text(), DAWCore.utils.noop )
-		.then( res => {
-			dt.spin = "";
-			dt.icon = res === VERSION ? "check" : "warning";
-		} );
 	return false;
 }
 
