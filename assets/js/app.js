@@ -66,9 +66,12 @@ channel.on("new:msg", (msg) => {
         const packets = msg["packets"];
         packets.forEach(packet => {
             const p = JSON.parse(packet);
-            if(!p["args"].includes(undefined)){
+            try{
                 DAW.callActionNoSend(p["action"], ...p["args"])
+            } catch(e) {
+                console.log("failed to apply action... " + e.message)
             }
+
             
         });
         return;
@@ -87,10 +90,12 @@ channel.on("new:msg", (msg) => {
         return;
     }
     if(msg["action"] != undefined && msg["args"] != undefined) {
-        if(msg["args"].includes(undefined)){
-            return;
+        try{
+            DAW.callActionNoSend(msg["action"], ...msg["args"])
+        } catch(e) {
+            console.log("failed to apply action... " + e.message)
         }
-        DAW.callActionNoSend(msg["action"], ...msg["args"])
+
         return;
     }
     if(msg["composition_mode"] != undefined && msg["composition_mode"] != true) {
