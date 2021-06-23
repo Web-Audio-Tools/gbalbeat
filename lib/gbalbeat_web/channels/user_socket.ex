@@ -17,7 +17,9 @@ defmodule GbalbeatWeb.UserSocket do
   # performing token verification on connect.
   @impl true
   def connect(params, socket, _connect_info) do
-    {:ok, assign(socket, :user_id, params["user_id"])}
+    socket = assign(socket, :room, params["room_id"])
+    socket = assign(socket, :user_id, params["user_id"])
+    {:ok, socket}
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:

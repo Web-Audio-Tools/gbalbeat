@@ -109,7 +109,7 @@ class DAWCore {
 	callAction( action, ...args ) {
 		const fn = DAWCore.actions[ action ];
 
-		window.channel.push("new:msg", {action: action, args: args, id: window.id})
+		window.channel.push("new:msg", {action: action, args: args, id: window.id, room: window.room})
 
 		if ( !fn ) {
 			console.error( `DAWCore: undefined action "${ action }"` );

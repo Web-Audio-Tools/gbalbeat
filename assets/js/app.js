@@ -22,12 +22,13 @@ function uuidv4() {
   }
 
 window.id = uuidv4();
+window.room = document.getElementById("room_id").innerHTML;
 
-window.history.pushState({page: "same"}, "same page", "/?id=" + document.getElementById("room_id").innerHTML);
+window.history.pushState({page: "same"}, "same page", "/?id=" + window.room);
 
 let socket = new Socket("/socket", {
     logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }),
-    params: {user_id: window.id}
+    params: {user_id: window.id, room_id: window.room}
 })
 
 
@@ -36,7 +37,7 @@ let socket = new Socket("/socket", {
 
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("music:" + document.getElementById("room_id").innerHTML, {})
+let channel = socket.channel("music:" + window.room, {})
 
 let presence = new Presence(channel)
 
@@ -64,6 +65,13 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("new:msg", (msg) => {
+    if(msg["packets"] != undefined) {
+        const packets = msg["packets"];
+        packets.forEach(packet => {
+            const p = JSON.parse(packet);
+            DAW.callActionNoSend(p["action"], ...p["args"])
+        });
+    }
     if(msg["id"] == window.id)
         return;
     if(msg["play"] != undefined && msg["play"] == true) {

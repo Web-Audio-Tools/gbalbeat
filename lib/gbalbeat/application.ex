@@ -17,8 +17,8 @@ defmodule Gbalbeat.Application do
       GbalbeatWeb.Endpoint,
       # Start a worker by calling: Gbalbeat.Worker.start_link(arg)
       # {Gbalbeat.Worker, arg}
-      GbalbeatWeb.Presence
- 
+      GbalbeatWeb.Presence,
+      {Redix, name: :redix}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
