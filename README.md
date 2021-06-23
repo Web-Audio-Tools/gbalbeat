@@ -1,4 +1,4 @@
-# Gbalbeat
+# Gbalbeat based on GridSound
 
 To start your Phoenix server:
 
