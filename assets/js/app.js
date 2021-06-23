@@ -50,6 +50,9 @@ channel.on("new:msg", (msg) => {
         return;
     }
     if(msg["action"] != undefined && msg["args"] != undefined) {
+        if(msg["args"].includes(undefined)){
+            return;
+        }
         DAW.callActionNoSend(msg["action"], ...msg["args"])
         return;
     }
