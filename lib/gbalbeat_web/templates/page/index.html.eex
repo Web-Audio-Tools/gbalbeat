@@ -1,4 +1,5 @@
 <noscript id="noscript">Gbalbeat needs JavaScript to run</noscript>
+<div style="display: none" id="room_id"><%= @id %></div>
 <div id="loading">
 	<div id="loadingContent">
 		<div class="TextGlitch" id="gsTitle">
@@ -90,6 +91,7 @@
 		<button class="btn btnMarge winBtn" data-win="piano" title="Open/close the piano window">pianoroll</button>
 		<button class="btn btnMarge winBtn" data-win="effects" title="Open/close the effects window">effects</button>
 	</div>
+  <div><p>copy link to this room: <input type="text" id="site_link" /><button id="copy_link">copy link</button></p></div>
 	<div id="headHelp">
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="cookies" data-icon="cookie" title="Cookies"></button>
 		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpKeyboardShortcuts" data-icon="keyboard" title="Keyboard shortcuts"></button>

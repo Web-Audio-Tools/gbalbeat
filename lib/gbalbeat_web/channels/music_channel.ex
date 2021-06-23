@@ -1,7 +1,7 @@
 defmodule GbalbeatWeb.MusicChannel do
     use Phoenix.Channel
   
-    def join("music:lobby", _message, socket) do
+    def join("music:" <> id, _message, socket) do
         {:ok, socket}
     end
 

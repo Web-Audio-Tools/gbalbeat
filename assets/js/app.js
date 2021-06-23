@@ -23,14 +23,16 @@ function uuidv4() {
 
 window.id = uuidv4();
 
+window.history.pushState({page: "same"}, "same page", "/?id=" + document.getElementById("room_id").innerHTML);
+
 let socket = new Socket("/socket", {
-    logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) })
+    logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }),
   })
 
 socket.connect();
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("music:lobby", {})
+let channel = socket.channel("music:" + document.getElementById("room_id").innerHTML, {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
@@ -72,5 +74,6 @@ channel.on("new:msg", (msg) => {
 
 window.socket = socket;
 window.channel = channel;
+
 
 require("../../daw/src/run.js")
