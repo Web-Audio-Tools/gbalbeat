@@ -66,10 +66,10 @@ channel.on("new:msg", (msg) => {
         const packets = msg["packets"];
         packets.forEach(packet => {
             const p = JSON.parse(packet);
-            if(p["args"].includes(undefined)){
-                return;
+            if(!p["args"].includes(undefined)){
+                DAW.callActionNoSend(p["action"], ...p["args"])
             }
-            DAW.callActionNoSend(p["action"], ...p["args"])
+            
         });
         return;
     }
