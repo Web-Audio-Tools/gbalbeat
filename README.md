@@ -1,4 +1,5 @@
 # Gbalbeat based on GridSound 1.0 with collab by jsilver with help
+Changes and transport synced.
 
 To start your Phoenix server:
 
