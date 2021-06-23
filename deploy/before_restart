@@ -8,6 +8,6 @@ end
 
 run("mix deps.get --only prod")
 run("SECRET_KEY_BASE=$SECRET DATABASE_URL=\"ecto://postgres:postgres!!!442@127.0.01/database\" MIX_ENV=prod mix compile")
-run("/home/gbaldraw/node-v14.15.0-linux-x64/bin/npm run deploy --prefix ./assets")
+run("PATH=$PATH:/home/gbaldraw/node-v14.15.0-linux-x64/bin npm run deploy --prefix ./assets")
 run("mix phx.digest")
 run('PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server')
