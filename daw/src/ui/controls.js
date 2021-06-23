@@ -140,7 +140,14 @@ window.UIcontrolsClickTempo = function() {
 		title: "Tempo",
 		element: DOM.tempoPopupContent,
 		submit( d ) {
-			DAW.callAction( "changeTempo", d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
+			if(DAW.isPlaying()){
+				DAW.pause();
+				DAW.callAction( "changeTempo", d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
+				DAW.play();
+			} else {
+				DAW.callAction( "changeTempo", d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
+			}
+			
 		},
 	} );
 }

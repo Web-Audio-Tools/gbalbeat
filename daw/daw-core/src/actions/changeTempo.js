@@ -1,6 +1,7 @@
 "use strict";
 
 DAWCore.actions.changeTempo = ( bpm, bPM, sPB, get ) => {
+	DAW.pause();
 	const bpmChanged = bpm !== get.bpm(),
 		signChanged =
 			bPM !== get.beatsPerMeasure() ||
@@ -57,9 +58,11 @@ DAWCore.actions.changeTempo = ( bpm, bPM, sPB, get ) => {
 				}
 			}
 		}
+		DAW.play();
 		return [
 			obj,
 			[ "cmp", "changeTempo", bpm, bPM, sPB ],
 		];
 	}
+	
 };
