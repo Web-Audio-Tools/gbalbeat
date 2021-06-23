@@ -1,5 +1,5 @@
 # Gbalbeat based on GridSound 1.0 with collab by jsilver with help
-
+Syncs: Piano roll, Step/Pattern Play, Parameter Change, Note Change
 
 To start your Phoenix server:
 
