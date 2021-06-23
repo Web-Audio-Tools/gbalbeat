@@ -3,7 +3,7 @@
 function UIcompositionChanged( obj, prevObj ) {
 	window.last_change = prevObj;
 	window.current_change = obj;
-	console.log( "change", obj );
+	// console.log( "change", obj );
 	// channel.push("new:msg", obj)
 	UIpatterns.change( obj );
 	UIsynth.change( obj );
@@ -21,7 +21,7 @@ function UIcompositionChanged( obj, prevObj ) {
 
 window.UIchangecomposition = function ( obj ) {
 	var prevObj = window.last_change;
-	console.log( "change", obj );
+	// console.log( "change", obj );
 	UIsynth.change( obj );
 	UIdrums.change( obj );
 	UIeffects.change( obj );

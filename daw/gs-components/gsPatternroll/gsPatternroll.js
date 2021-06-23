@@ -68,7 +68,7 @@ class GSPatternroll {
 	_ongsuiEvents( e ) {
 		const d = e.detail;
 
-		console.log(e);
+		// console.log(e);
 
 		switch ( d.component ) {
 			case "gsuiTracklist":

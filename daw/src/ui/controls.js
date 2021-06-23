@@ -32,6 +32,7 @@ window.UIcontrolsInit = function() {
 window.UIcontrolsSliderTime_inputstart = function( beat ) {
 	DAW.cb.clockUpdate = null;
 	UIclock.setTime( beat );
+	window.channel.push("new:msg", {set_time: true, beat: beat})
 }
 window.UIcontrolsSliderTime_oninputend = function( _beat ) {
 	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
@@ -40,6 +41,7 @@ window.UIcontrolsSliderTime_oninput = function( beat ) {
 	const beatRound = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
 
 	UIclock.setTime( beatRound );
+	window.channel.push("new:msg", {set_time: true, beat: beatRound})
 }
 window.UIcontrolsSliderTime_onchange = function() {
 	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
@@ -53,6 +55,7 @@ window.UIcontrolsBPMTap = function() {
 
 window.UIcontrolsClockUpdate = function( beat ) {
 	UIclock.setTime( beat );
+	window.channel.push("new:msg", {set_time: true, beat: beat})
 }
 
 window.UIcontrolsCurrentTime = function( beat, focused ) {

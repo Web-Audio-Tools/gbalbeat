@@ -93,6 +93,8 @@ class gsuiClock extends HTMLElement {
 
 	// .........................................................................
 	setTime( beats ) {
+		// console.log("setTime + " + beats);
+		
 		const [ a, b, c ] = this.getAttribute( "mode" ) === "second"
 				? gsuiClock.parseBeatsToSeconds( beats, +this.getAttribute( "bpm" ) || 60 )
 				: gsuiClock.parseBeatsToBeats( beats, this._bPM, this._sPB );

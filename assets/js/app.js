@@ -83,15 +83,22 @@ channel.on("new:msg", (msg) => {
     if(msg["id"] == window.id)
         return;
 
-        if(msg["midi"] != undefined){
-            const midi = msg["midi"];
-            if(msg["live_key_up"] == true) {
-                DAW.pianoroll.liveKeyupNoSend(midi);
-            } else {
-                DAW.pianoroll.liveKeydownNoSend(midi);
-            }
-            
+
+    if(msg["set_time"] != undefined && msg["set_time"] == true && msg["beat"] != undefined){
+        const beat = msg["beat"];
+        UIclock.setTime( beat );
+    }
+
+    // live pianoroll
+    if(msg["midi"] != undefined){
+        const midi = msg["midi"];
+        if(msg["live_key_up"] == true) {
+            DAW.pianoroll.liveKeyupNoSend(midi);
+        } else {
+            DAW.pianoroll.liveKeydownNoSend(midi);
         }
+        
+    }
 
     if(msg["play"] != undefined && msg["play"] == true) {
         DAW.play();
