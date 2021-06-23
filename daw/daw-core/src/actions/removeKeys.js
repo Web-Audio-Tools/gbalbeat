@@ -4,7 +4,11 @@ DAWCore.actions.removeKeys = ( patId, keyIds, get ) => {
 	const pat = get.pattern( patId ),
 		keys = get.keys( pat.keys ),
 		keysObj = keyIds.reduce( ( obj, id ) => {
-			const { prev, next } = keys[ id ];
+			
+			console.log(keys[id])
+			// const { prev, next } = keys[ id ];
+			const prev = keys[id]["prev"]
+			const next = keys[id]["next"]
 
 			obj[ id ] = undefined;
 			if ( prev !== null ) {
