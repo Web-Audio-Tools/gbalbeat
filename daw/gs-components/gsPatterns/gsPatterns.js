@@ -1,7 +1,5 @@
 "use strict";
 
-import { throws } from "assert";
-
 class GSPatterns {
 	constructor() {
 		const uiPatterns = GSUI.createElement( "gsui-patterns" ),
@@ -10,7 +8,6 @@ class GSPatterns {
 				drums: new gsuiDrumsforms(),
 				buffer: new gsuiWaveforms(),
 				bufferHD: new gsuiWaveforms(),
-				pds: new gsuiKeysforms()
 			} );
 
 		uiPatterns.onpatternDataTransfer = elPat => {
@@ -22,7 +19,7 @@ class GSPatterns {
 			if ( act in DAWCore.actions ) {
 				this._dawcore.callAction( act, ...args );
 			} else {
-				console.log( "GSPatterns.onchange", act, ...args );
+				lg( "GSPatterns.onchange", act, ...args );
 			}
 		};
 		this.data = Object.freeze( {
@@ -47,10 +44,6 @@ class GSPatterns {
 			this._createChannel.bind( this ),
 			this._updateChannel.bind( this ),
 			this._deleteChannel.bind( this ) );
-		this._pdCrud = DAWCore.utils.createUpdateDelete.bind( null, this.data.pds,
-				this._createChannel.bind( this ),
-				this._updateChannel.bind( this ),
-				this._deleteChannel.bind( this ) );
 		Object.seal( this );
 
 		svgForms.bufferHD.hdMode( true );
@@ -69,7 +62,6 @@ class GSPatterns {
 		this.svgForms.drums.empty();
 		this.svgForms.buffer.empty();
 		this.svgForms.bufferHD.empty();
-		this.svgForms.pd.empty();
 	}
 	bufferLoaded( buffers ) {
 		const pats = Object.entries( this._dawcore.get.patterns() ),
@@ -85,7 +77,6 @@ class GSPatterns {
 		} );
 	}
 	change( obj ) {
-		this._pdCrud(obj.pds);
 		this._synthsCrud( obj.synths );
 		this._patternsCrud( obj.patterns );
 		this._channelsCrud( obj.channels );
@@ -133,8 +124,6 @@ class GSPatterns {
 					this.svgForms.buffer.update( id, buf.buffer );
 					this.svgForms.bufferHD.update( id, buf.buffer );
 				}
-			} else if (type === "pd") {
-				this.svgForms.pd.update( id, get.keys( pat.keys ), pat.duration );
 			}
 			if ( type !== "buffer" ) {
 				this.svgForms[ type ].setSVGViewbox( elPat.querySelector( "svg" ), 0, pat.duration );
@@ -162,31 +151,6 @@ class GSPatterns {
 	_deleteSynth( id ) {
 		delete this.data.synths[ id ];
 		this._uiPatterns.deleteSynth( id );
-	}
-
-	// .........................................................................
-	_createPd(id, obj) {
-		// load patch
-		this.data.pds[ id ] = DAWCore.utils.jsonCopy( obj );
-		this._uiPatterns.addPd( id );
-		this._updatePd( id, obj );
-	}
-
-	_updatePd(id, obj) {
-		const dat = this.data.pds[ id ];
-
-		Object.entries( obj ).forEach( ( [ prop, val ] ) => {
-			dat[ prop ] = val;
-			this._uiPatterns.changePd( id, prop, val );
-		} );
-		if ( "dest" in obj ) {
-			this._uiPatterns.changePd( id, "destName", this._dawcore.get.channel( obj.dest ).name );
-		}
-	}
-
-	_deletePd( id ) {
-		delete this.data.pds[ id ];
-		this._uiPatterns.deletePd( id );
 	}
 
 	// .........................................................................

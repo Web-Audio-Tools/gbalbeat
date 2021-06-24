@@ -71,16 +71,17 @@ window.presence = presence;
 socket.connect();
 
 channel.on("new:msg", (msg) => {
-    if(msg["packets"] != undefined && 
-    msg["packets"]["action"] != undefined && 
-    msg["packets"]["args"] != undefined) {
+    if(msg["packets"] != undefined) {
         // reset daw
         for(var i = 0; i < UIhistoryActions.size; i++) DAW.history.undo();
         const packets = msg["packets"];
         packets.forEach(packet => {
             const p = JSON.parse(packet);
-
-            DAW.callActionNoSend(p["action"], ...p["args"])
+            try{
+                DAW.callActionNoSend(p["action"], ...p["args"])
+            } catch(e) {
+                console.log("failed to apply action... " + e.message)
+            }
 
             
         });

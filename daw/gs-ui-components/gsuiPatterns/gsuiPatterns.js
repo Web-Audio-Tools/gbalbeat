@@ -3,15 +3,12 @@
 class gsuiPatterns extends HTMLElement {
 	constructor() {
 		const children = GSUI.getTemplate( "gsui-patterns" ),
-			[ elPanelBuffers, elPanelDrums, elPanelKeys, elPanelPds ] = children,
+			[ elPanelBuffers, elPanelDrums, elPanelKeys ] = children,
 			elNewDrums = elPanelDrums.querySelector( "[data-action='newDrums']" ),
 			elNewSynth = elPanelKeys.querySelector( "[data-action='newSynth']" ),
-			// add 
-			elNewPd = elPanelPds.querySelector( "[data-action='newPd']" ),
 			elBufferList = elPanelBuffers.querySelector( ".gsuiPatterns-panel-list" ),
 			elDrumsList = elPanelDrums.querySelector( ".gsuiPatterns-panel-list" ),
 			elSynthList = elPanelKeys.querySelector( ".gsuiPatterns-panel-list" ),
-			elPdList = elPanelPds.querySelector(".gsuiPatterns-panel-list"),
 			nlKeysLists = elPanelKeys.getElementsByClassName( "gsuiPatterns-synth-patterns" ),
 			fnsPattern = Object.freeze( {
 				clone: id => this.onchange( "clonePattern", id ),
@@ -32,21 +29,7 @@ class gsuiPatterns extends HTMLElement {
 						? this.onchange( "removeSynth", id )
 						: gsuiPopup.alert( "Error", "You have to keep at least one synthesizer" );
 				},
-			}),
-			fnsPd = Object.freeze( {
-				expand: id => this.expandPd( id ),
-				undefined: id => this.onchange( "openPd", id ),
-				redirect: ( id, e ) => this._openChannelsPopup( "redirectPd", id, e ),
-				newPattern: id => {
-					this.onchange( "addPatternKeys", id );
-					this.expandPd( id, true );
-				},
-				delete: id => {
-					elPdList.children.length > 1
-						? this.onchange( "removePd", id )
-						: gsuiPopup.alert( "Error", "You have to keep at least one Pd" );
-				}
-			});
+			} );
 
 		super();
 		this.onchange =
@@ -55,10 +38,8 @@ class gsuiPatterns extends HTMLElement {
 		this._elBufferList = elBufferList;
 		this._elDrumsList = elDrumsList;
 		this._elSynthList = elSynthList;
-		this._elPdList = elPdList;
 		this._nlKeysLists = nlKeysLists;
 		this._fnsSynth = fnsSynth;
-		this._fnsPd = fnsPd;
 		this._fnsPattern = fnsPattern;
 		Object.seal( this );
 
@@ -92,17 +73,6 @@ class gsuiPatterns extends HTMLElement {
 			parentSelector: ".gsuiPatterns-synth-patterns",
 			onchange: this._onreorderPatternsKeys.bind( this ),
 		} );
-		new gsuiReorder( {
-			rootElement: elPdList,
-			direction: "column",
-			dataTransfer: ( ...args ) => this.onpatternDataTransfer( ...args ),
-			dataTransferType: "pattern-keys",
-			itemSelector: ".gsuiPatterns-pattern",
-			handleSelector: ".gsuiPatterns-pattern-grip",
-			parentSelector: ".gsuiPatterns-synth-patterns",
-			onchange: this._onreorderPatternsKeys.bind( this ),
-		} );
-
 		elSynthList.ondragover = e => {
 			const syn = e.target.closest( ".gsuiPatterns-synth" );
 
@@ -115,25 +85,11 @@ class gsuiPatterns extends HTMLElement {
 				this.expandSynth( e.target.closest( ".gsuiPatterns-synth" ).dataset.id );
 			}
 		};
-		elPdList.ondragover = e => {
-			const pd = e.target.closest( ".gsuiPatterns-pd" );
-
-			if ( pd ) {
-				this.expandSynth( syn.dataset.id, true );
-			}
-		};
-		elPdList.ondblclick = e => {
-			if ( e.target.classList.contains( "gsuiPatterns-pd-info" ) ) {
-				this.expandPd( e.target.closest( ".gsuiPatterns-pd" ).dataset.id );
-			}
-		};
 		elBufferList.onclick =
 		elDrumsList.onclick = this._onclickListPatterns.bind( this );
 		elSynthList.onclick = this._onclickSynths.bind( this );
-		elPdList.onclick = this._onclickPds.bind( this );
 		elNewDrums.onclick = () => this.onchange( "addPatternDrums" );
 		elNewSynth.onclick = () => this.onchange( "addSynth" );
-		elNewPd.onclick = () => this.onchange( "addPd" );
 	}
 
 	// .........................................................................
@@ -152,12 +108,6 @@ class gsuiPatterns extends HTMLElement {
 			show = elSyn.classList.toggle( "gsuiPatterns-synth-expanded", b );
 
 		elSyn.querySelector( ".gsuiPatterns-synth-expand" ).dataset.icon = `caret-${ show ? "down" : "right" }`;
-	}
-	expandPd( id, b ) {
-		const elPd = this._getSynth( id ),
-			show = elPd.classList.toggle( "gsuiPatterns-pd-expanded", b );
-
-		elPd.querySelector( ".gsuiPatterns-pd-expand" ).dataset.icon = `caret-${ show ? "down" : "right" }`;
 	}
 	reorderPatterns( patterns ) {
 		gsuiReorder.listReorder( this._elBufferList, patterns );
@@ -216,17 +166,6 @@ class gsuiPatterns extends HTMLElement {
 	}
 	deleteSynth( id ) {
 		this._getSynth( id ).remove();
-	}
-
-	// .........................................................................
-	addPd( id ) {
-		console.log(id);
-	}
-	changePd ( id, prop, val ) {
-		console.log(`id: ${id} prop ${prop} val ${val}`)
-	}
-	deletePd ( id ) {
-		console.log(id);
 	}
 
 	// .........................................................................
@@ -326,15 +265,6 @@ class gsuiPatterns extends HTMLElement {
 
 			if ( syn ) {
 				this._fnsSynth[ e.target.dataset.action ]( syn.dataset.id, e );
-			}
-		}
-	}
-	_onclickPds( e ) {
-		if ( this._onclickListPatterns( e ) !== false ) {
-			const pd = e.target.closest( ".gsuiPatterns-synth" );
-
-			if ( pd ) {
-				this._fnsPd[ e.target.dataset.action ]( syn.dataset.id, e );
 			}
 		}
 	}
