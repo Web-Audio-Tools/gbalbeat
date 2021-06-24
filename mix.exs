@@ -47,7 +47,8 @@ defmodule Gbalbeat.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:uuid, "~> 1.1" },
       {:redix, ">= 0.0.0"},
-      {:json, "~> 1.4"} 
+      {:json, "~> 1.4"},
+      {:distillery, "~> 2.1"}
     ]
   end
 
