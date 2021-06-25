@@ -24,7 +24,7 @@ defmodule GbalbeatWeb.Endpoint do
     at: "/",
     from: :gbalbeat,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt samples)
+    only: ~w(css fonts images js favicon.ico robots.txt samples wam)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

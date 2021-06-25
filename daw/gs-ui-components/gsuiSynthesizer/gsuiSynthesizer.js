@@ -30,6 +30,12 @@ class gsuiSynthesizer extends HTMLElement {
 	}
 
 	// .........................................................................
+
+	changeToPluginUI() {
+		console.log("changeToPluginUI")
+	}
+
+	// .........................................................................
 	connectedCallback() {
 		if ( !this.firstChild ) {
 			this.classList.add( "gsuiSynthesizer" );
