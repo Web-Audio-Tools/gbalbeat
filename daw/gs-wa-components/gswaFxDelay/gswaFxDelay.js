@@ -61,7 +61,8 @@ class gswaFxDelay {
 		const gain = this.ctx.createGain();
 		const pan = this.ctx.createStereoPanner();
 
-		lg("_addEcho", id, GSData.deepCopy( echo ))
+		// lg("_addEcho", id, GSData.deepCopy( echo ))
+		console.log(`_addEcho ${id} ${GSData.deepCopy( echo )}`)
 		delay.connect( gain );
 		gain.connect( pan );
 		pan.connect( this.output );
@@ -70,14 +71,16 @@ class gswaFxDelay {
 		this.input.connect( delay );
 	}
 	_removeEcho( id ) {
-		lg("_removeEcho", id)
+		// lg("_removeEcho", id)
+		console.log(`_removeEcho ${id}`)
 		this.input.disconnect( this._nodes.get( id ).delay );
 		this._nodes.delete( id );
 	}
 	_updateEcho( id, echo ) {
 		const nodes = this._nodes.get( id );
 
-		lg("_updateEcho", id, GSData.deepCopy( echo ))
+		// lg("_updateEcho", id, GSData.deepCopy( echo ))
+		console.log(`_updateEcho ${id} ${GSData.deepCopy( echo )}`)
 		this._updateEchoParam( nodes.pan.pan, echo.pan );
 		this._updateEchoParam( nodes.gain.gain, echo.gain );
 		this._updateEchoParam( nodes.delay.delayTime, echo.delay );

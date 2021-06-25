@@ -19,7 +19,8 @@ class GSPatterns {
 			if ( act in DAWCore.actions ) {
 				this._dawcore.callAction( act, ...args );
 			} else {
-				lg( "GSPatterns.onchange", act, ...args );
+				// lg( "GSPatterns.onchange", act, ...args );
+				console.log(`GSPatterns.onchange ${act} ${args}`)
 			}
 		};
 		this.data = Object.freeze( {
