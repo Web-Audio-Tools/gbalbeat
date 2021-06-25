@@ -34,6 +34,7 @@ class gswaSynth {
 		this._bps = bpm / 60;
 	}
 	change( obj ) {
+		console.log("gsdata change")
 		this.gsdata.change( obj );
 	}
 

@@ -7,6 +7,7 @@ DAWCore.controllers.synth = class {
 			env: Object.seal( DAWCore.json.env() ),
 			lfo: Object.seal( DAWCore.json.lfo() ),
 			oscillators: {},
+			type: "default"
 		} );
 		this.on = DAWCore.utils.mapCallbacks( [
 			"addOsc",
@@ -20,6 +21,7 @@ DAWCore.controllers.synth = class {
 			"changeEnv",
 			"changeEnvProp",
 			"updateEnvWave",
+			"changeNewSynthType",
 		], fns.dataCallbacks );
 		this._oscsCrud = DAWCore.utils.createUpdateDelete.bind( null, this.data.oscillators,
 			this._addOsc.bind( this ),
@@ -50,6 +52,11 @@ DAWCore.controllers.synth = class {
 		}
 		if ( obj.oscillators ) {
 			this._oscsCrud( obj.oscillators );
+		}
+		if( "type" in obj ) {
+			this.data.type = obj.type;
+			// change to type
+			console.log("type changed")
 		}
 	}
 

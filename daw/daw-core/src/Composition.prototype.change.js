@@ -50,6 +50,7 @@ DAWCore.Composition.prototype.change.fn = new Map( [
 		}
 	} ],
 	[ "synths", function( { synths }, { synths: prevSynths } ) {
+		console.log("synth change")
 		Object.entries( synths ).forEach( ( [ id, synthObj ] ) => {
 			if ( !synthObj ) {
 				this._synths.get( id ).stopAllKeys();

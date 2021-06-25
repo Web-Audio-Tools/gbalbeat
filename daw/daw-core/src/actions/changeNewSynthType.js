@@ -1,6 +1,13 @@
 "use strict";
 
+DAWCore.actions.changeNewSynthType = ( id, type, get ) => {
+    const syn = get.synth( id );
 
-DAWCore.actions.changeNewSynthType = function(id, type) {
-    console.log(id, type);
-}
+    // syn.type = type;
+    console.log(syn);
+
+    return [
+        { synths: { [ id ]: { type } } },
+        [ "synths", "renameSynth", syn.name, type ],
+    ];
+};
