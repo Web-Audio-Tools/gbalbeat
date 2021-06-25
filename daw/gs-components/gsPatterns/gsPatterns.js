@@ -20,7 +20,9 @@ class GSPatterns {
 				this._dawcore.callAction( act, ...args );
 			} else {
 				// lg( "GSPatterns.onchange", act, ...args );
-				console.log(`GSPatterns.onchange ${act} ${args}`)
+				console.log(`GSPatterns.onchange`)
+				console.log(act);
+				console.log(args);
 			}
 		};
 		this.data = Object.freeze( {
@@ -139,6 +141,8 @@ class GSPatterns {
 		this._updateSynth( id, obj );
 	}
 	_updateSynth( id, obj ) {
+		console.log(`id: ${id}`)
+		console.log(obj);
 		const dat = this.data.synths[ id ];
 
 		Object.entries( obj ).forEach( ( [ prop, val ] ) => {

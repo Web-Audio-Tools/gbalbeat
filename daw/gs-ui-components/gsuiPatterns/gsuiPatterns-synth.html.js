@@ -12,6 +12,11 @@ GSUI.setTemplate( "gsui-patterns-synth", () => (
 					GSUI.createElement( "span", { class: "gsuiPatterns-btnText" } ),
 				),
 			),
+			GSUI.createElement("select", {class: "gsuiPatterns-synth-synthSelect", "data-action": "changeNewSynthType", title: "Change synth type"},
+			GSUI.createElement("option", {value: "default"}, "default"),
+			GSUI.createElement("option", {value: "webcz101"}, "webcz101"),
+			
+			),
 			GSUI.createElement( "button", { class: "gsuiPatterns-synth-btn gsuiIcon", "data-action": "newPattern", "data-icon": "plus", title: "Create a new pattern with this synthesizer" } ),
 			GSUI.createElement( "button", { class: "gsuiPatterns-synth-btn gsuiIcon", "data-action": "delete", "data-icon": "close", title: "Delete the synthesizer and its patterns" } ),
 		),

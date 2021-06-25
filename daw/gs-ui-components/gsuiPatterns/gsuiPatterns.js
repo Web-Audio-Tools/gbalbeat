@@ -6,6 +6,7 @@ class gsuiPatterns extends HTMLElement {
 			[ elPanelBuffers, elPanelDrums, elPanelKeys ] = children,
 			elNewDrums = elPanelDrums.querySelector( "[data-action='newDrums']" ),
 			elNewSynth = elPanelKeys.querySelector( "[data-action='newSynth']" ),
+			elSynthSelect = elPanelKeys.querySelector( "[data-action='changeNewSynthType']" ),
 			elBufferList = elPanelBuffers.querySelector( ".gsuiPatterns-panel-list" ),
 			elDrumsList = elPanelDrums.querySelector( ".gsuiPatterns-panel-list" ),
 			elSynthList = elPanelKeys.querySelector( ".gsuiPatterns-panel-list" ),
@@ -24,6 +25,7 @@ class gsuiPatterns extends HTMLElement {
 					this.onchange( "addPatternKeys", id );
 					this.expandSynth( id, true );
 				},
+				changeNewSynthType: (id, e) => this.onchange( "changeNewSynthType", id, e.target.value),
 				delete: id => {
 					elSynthList.children.length > 1
 						? this.onchange( "removeSynth", id )
@@ -217,6 +219,9 @@ class gsuiPatterns extends HTMLElement {
 		this._elSynthList.querySelector( ".gsuiPatterns-synth-selected" )?.classList?.remove( "gsuiPatterns-synth-selected" );
 		this._getSynth( id ).classList.add( "gsuiPatterns-synth-selected" );
 	}
+	selectedSynth() {
+		return this.elSynthList.querySelector('.gsuiPatterns-synth-selected')
+	}
 
 	// .........................................................................
 	_getSynth( id ) {
@@ -253,7 +258,7 @@ class gsuiPatterns extends HTMLElement {
 	}
 	_onclickListPatterns( e ) {
 		const pat = e.target.closest( ".gsuiPatterns-pattern" );
-
+		console.log(e)
 		if ( pat ) {
 			this._fnsPattern[ e.target.dataset.action ]( pat.dataset.id, e );
 			return false;
