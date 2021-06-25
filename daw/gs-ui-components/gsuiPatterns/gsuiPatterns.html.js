@@ -33,6 +33,11 @@ GSUI.setTemplate( "gsui-patterns", () => [
 				GSUI.createElement( "i", { class: "gsuiPatterns-btnIcon gsuiIcon", "data-icon": "plus" } ),
 				GSUI.createElement( "span", { class: "gsuiPatterns-btnText" }, "new synth" ),
 			),
+			GSUI.createElement("select", {class: "", "data-action": "changeNewSynthType", title: "Change synth type"},
+				GSUI.createElement("option", {value: "default"}, "default"),
+				GSUI.createElement("option", {value: "webcz101"}, "webcz101"),
+				
+			),
 		),
 		GSUI.createElement( "div", { class: "gsuiPatterns-placeholderToCheck gsuiPatterns-panel-list" } ),
 		GSUI.createElement( "div", { class: "gsuiPatterns-placeholder" },
