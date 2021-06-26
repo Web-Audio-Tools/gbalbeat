@@ -152,4 +152,8 @@ window.channel = channel;
 import WebMidi from "webmidi";
 window.WebMidi = WebMidi;
 
+import "../../assets/static/wam/webcz101/dist/wam.min.js"
+import "../../assets/static/wam/webcz101/dist/webcz101.min.js"
+
+
 require("../../daw/src/run.js")
